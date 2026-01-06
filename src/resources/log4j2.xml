@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration name="autosave" packages="">
+    <Appenders>
+        <Console name="stdout">
+            <PatternLayout pattern="%d{HH:mm:ss} [%p] %m%n"/>
+        </Console>
+    </Appenders>
+
+    <Loggers>
+        <Root level="INFO">
+            <AppenderRef ref="stdout"/>
+        </Root>
+    </Loggers>
+</Configuration>

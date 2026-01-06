@@ -1,8 +1,13 @@
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
 public class AutoSaveApp {
+    private static final Logger LOGGER = LogManager.getLogger();
+
     String os;
     Path storageDir;
 
@@ -16,6 +21,8 @@ public class AutoSaveApp {
 
     private void checkOs() {
         String osName = System.getProperty("os.name").toLowerCase();
+        LOGGER.info("Detected operating system: {}", System.getProperty("os.name"));
+
         if(osName.contains("win")) {
             os = "win";
         } else if(osName.contains("mac")) {
@@ -40,10 +47,11 @@ public class AutoSaveApp {
             try {
                 Files.createDirectories(path);
             } catch (Exception e) {
-                System.out.println(e.getMessage());
+                LOGGER.error("Error in initializing storage directory:", e);
             }
         }
 
         storageDir = path;
+        LOGGER.info("Initialized storage directory at: {}", path);
     }
 }
